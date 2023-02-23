@@ -44,6 +44,40 @@ public class App {
                 }
                 JOptionPane.showMessageDialog(null, "Aluno "+opt_alunos +" Removido com sucesso !");
             }
+            else if(option == "Alterar Dados")
+            {
+                Object opt_alunos = mat.ListagemAlunos(alunos);
+                for(int i = 0; i < alunos.size(); i++)
+                {
+                    if(opt_alunos == null) break;
+                    else if(opt_alunos == alunos.get(i).nome)
+                    {
+                        Object[] opt_dados = {"Nome", "CPF", "Número de matricula","Quantidade de disciplinas", "Email"};
+                        Object dado = JOptionPane.showInputDialog(null,"Escolha um dado para alterar:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opt_dados, opt_dados[0]);
+                        String val = JOptionPane.showInputDialog("Qual o novo " + dado);
+                        if(dado == null) break;
+                        switch (dado.toString()) 
+                        {
+                            case "Nome":
+                                alunos.get(i).nome = val;
+                                break;
+                            case "CPF":
+                                alunos.get(i).cpf = val;
+                                break;
+                            case "Número de matricula":
+                                alunos.get(i).nMatricula = val;
+                                break;
+                            case "Quantidade de disciplinas":
+                                alunos.get(i).nDisciplinas = val;
+                                break;
+                            case "Email":
+                                alunos.get(i).email = val;
+                                break;    
+                        }
+                        break;
+                    }
+                }
+            }
             
             
         }
